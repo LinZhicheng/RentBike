@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/menu_main_to_rent">
+        <item
+            android:id="@+id/menu_search"
+            android:actionViewClass="android.widget.SearchView"
+            android:icon="@android:drawable/ic_menu_search"
+            android:title="搜索"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/menu_map"
+            android:icon="@android:drawable/ic_menu_mapmode"
+            android:title="地图"
+            app:showAsAction="ifRoom" />
+        <item
+            android:id="@+id/menu_choose"
+            android:icon="@android:drawable/ic_menu_edit"
+            android:title="筛选"
+            app:showAsAction="ifRoom" />
+    </group>
+
+
+</menu>

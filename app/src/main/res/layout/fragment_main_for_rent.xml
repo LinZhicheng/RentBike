@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray">
+
+    <ScrollView
+        android:id="@+id/for_rent_scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="15dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="品牌"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/for_rent_brand"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:paddingEnd="5dip"
+                    android:paddingStart="5dip"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="型号"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/for_rent_type"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:paddingEnd="5dip"
+                    android:paddingStart="5dip"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="车龄"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/for_rent_age"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="配件"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/for_rent_attrs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:hint="锁、码表、货架、手电筒等"
+                    android:paddingEnd="5dip"
+                    android:paddingStart="5dip"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="40dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="价格"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/for_rent_sub_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="15dip"
+                        android:background="@android:color/white"
+                        android:src="@android:drawable/ic_delete" />
+
+                    <TextView
+                        android:id="@+id/for_rent_price"
+                        android:layout_width="60dip"
+                        android:layout_height="fill_parent"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@android:color/black"
+                        android:textSize="15sp" />
+
+                    <ImageButton
+                        android:id="@+id/for_rent_add_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/white"
+                        android:src="@android:drawable/ic_input_add" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="地址"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/for_rent_address"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:hint="省、市、区县、街道名称、小区等"
+                    android:paddingEnd="5dip"
+                    android:paddingStart="5dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="70dip"
+                android:layout_marginTop="1dip"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="100dip"
+                    android:layout_height="fill_parent"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="要求"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/for_rent_require"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginStart="1dip"
+                    android:background="@android:color/white"
+                    android:paddingEnd="5dip"
+                    android:paddingStart="5dip"
+                    android:textColor="@android:color/black"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip">
+
+                <ImageView
+                    android:id="@+id/for_rent_pic1"
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dip"
+                    android:src="@drawable/list_item_thumbnail" />
+
+                <ImageView
+                    android:id="@+id/for_rent_pic2"
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/list_item_thumbnail"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:id="@+id/for_rent_pic3"
+                    android:layout_width="100dip"
+                    android:layout_height="100dip"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dip"
+                    android:src="@drawable/list_item_thumbnail"
+                    android:visibility="invisible" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/for_rent_confirm"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="50dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@color/colorPrimary"
+                    android:text="确    定"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/for_rent_clear"
+                    android:layout_width="100dip"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginEnd="50dip"
+                    android:layout_marginTop="20dip"
+                    android:background="@color/colorPrimary"
+                    android:text="清    空"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/for_rent_please_login"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="请登录"
+        android:textColor="@android:color/black"
+        android:textSize="15sp" />
+
+</FrameLayout>

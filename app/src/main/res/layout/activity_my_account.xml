@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
+    tools:context="com.android.davidlin.rentbike.view.MyAccountActivity">
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_account_bindingphone"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="20dip"
+        app:group_title="我的手机" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_account_bindingemail"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/my_account_bindingphone"
+        android:layout_marginTop="2dip"
+        app:group_title="我的邮箱" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_account_changepassword"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/my_account_bindingemail"
+        android:layout_marginTop="2dip"
+        app:group_title="修改密码" />
+
+    <Button
+        android:id="@+id/my_account_logout"
+        android:layout_width="300dip"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/my_account_changepassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dip"
+        android:background="@android:color/holo_red_light"
+        android:text="退出当前账号"
+        android:textColor="@android:color/white"
+        android:textSize="16sp" />
+</RelativeLayout>

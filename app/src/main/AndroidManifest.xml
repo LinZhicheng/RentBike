@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.davidlin.rentbike">
+
+    <!-- 在6.0+中，除了申请Permission，还需要在写入文件前在Java代码中申请权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- 根据StackOverFlow，不请求CAMERA时，在6.0中可以正常调用相机 -->
+    <!-- <uses-permission android:name="android.permission.CAMERA" /> -->
+    <application
+        android:name=".RentBike"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".view.MainActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".view.BikeDetailActivity"
+            android:label="车辆详情"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.LoginActivity"
+            android:label="登录"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.FindPasswordActivity"
+            android:label="重置密码"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.SubmitActivity"
+            android:label="注册"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.MyAccountActivity"
+            android:label="我的账户"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.BindingPhoneActivity"
+            android:label="绑定电话"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.BindingEmailActivity"
+            android:label="绑定邮箱"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.ChangePasswordActivity"
+            android:label="修改密码"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.MyOrdersActivity"
+            android:label="我的订单"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.OrderDetailActivity"
+            android:label="订单详情"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".view.LargeImageActivity"
+            android:label=""
+            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+
+
+        <receiver
+            android:name=".receiver.NetworkStateReceiver"
+            android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <com.android.davidlin.rentbike.usercontrol.RedTipTextView
+        android:id="@+id/grouptextview_title"
+        android:layout_width="110dip"
+        android:layout_height="fill_parent"
+        android:gravity="center_vertical"
+        android:paddingEnd="1dip"
+        android:paddingStart="15dip"
+        android:textColor="@android:color/black"
+        android:textSize="15sp"
+        app:redTipsVisibility="visible" />
+
+    <TextView
+        android:id="@+id/grouptextview_tips"
+        android:layout_width="185dip"
+        android:layout_height="fill_parent"
+        android:layout_toEndOf="@id/grouptextview_title"
+        android:gravity="center_vertical"
+        android:paddingEnd="1dip"
+        android:paddingStart="10dip" />
+
+    <com.android.davidlin.rentbike.usercontrol.CircleTextView
+        android:id="@+id/grouptextview_number"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/grouptextview_tips"
+        android:gravity="center"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/my_profile_arrow"
+        android:layout_width="20dip"
+        android:layout_height="20dip"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="15dip"
+        android:layout_toEndOf="@id/grouptextview_number"
+        android:src="@drawable/list_item_thumbnail" />
+
+</RelativeLayout>

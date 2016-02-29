@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+    <declare-styleable name="KeyValueTextView">
+        <attr name="key" format="string" />
+        <attr name="value" format="string" />
+    </declare-styleable>
+    <declare-styleable name="RedTipTextView">
+        <attr name="redTipsVisibility">
+            <enum name="invisible" value="0" />
+            <enum name="visible" value="1" />
+            <enum name="gone" value="2" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="GroupTextView">
+        <attr name="group_title" format="string" />
+    </declare-styleable>
+</resources>

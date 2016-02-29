@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.android.davidlin.rentbike.usercontrol.CircleImageView
+        android:id="@+id/comment_list_item_portrait"
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_marginStart="10dip"
+        android:layout_marginTop="10dip"
+        android:src="@drawable/list_item_thumbnail" />
+
+    <TextView
+        android:id="@+id/comment_list_item_customerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dip"
+        android:layout_marginTop="10dip"
+        android:layout_toEndOf="@id/comment_list_item_portrait"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/comment_list_item_rank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/comment_list_item_portrait"
+        android:layout_marginBottom="5dip"
+        android:layout_marginStart="15dip"
+        android:layout_toEndOf="@id/comment_list_item_portrait"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/comment_list_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/comment_list_item_portrait"
+        android:layout_marginBottom="5dip"
+        android:layout_marginStart="15dip"
+        android:layout_toEndOf="@id/comment_list_item_rank"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/comment_list_item_comment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_list_item_portrait"
+        android:layout_marginBottom="5dip"
+        android:layout_marginEnd="15dip"
+        android:layout_marginStart="15dip"
+        android:layout_marginTop="5dip"
+        android:textSize="17sp" />
+
+</RelativeLayout>

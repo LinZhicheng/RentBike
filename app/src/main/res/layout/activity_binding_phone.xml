@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
+    tools:context="com.android.davidlin.rentbike.view.BindingPhoneActivity">
+
+    <EditText
+        android:id="@+id/binding_phone_number"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="20dip"
+        android:background="@android:color/white"
+        android:hint="请输入想要绑定的手机号"
+        android:inputType="phone"
+        android:paddingEnd="10dip"
+        android:paddingStart="10dip" />
+
+    <LinearLayout
+        android:id="@+id/bindin_phone_linearlayout"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_below="@id/binding_phone_number"
+        android:layout_marginTop="2dip"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/binding_phone_code"
+            android:layout_width="250dip"
+            android:layout_height="fill_parent"
+            android:background="@android:color/white"
+            android:hint="请输入短信验证码"
+            android:inputType="phone"
+            android:paddingEnd="10dip"
+            android:paddingStart="10dip" />
+
+        <Button
+            android:id="@+id/binding_phone_getcode"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/colorPrimary"
+            android:text="获取验证码"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/binding_code_confirm"
+        android:layout_width="300dip"
+        android:layout_height="50dip"
+        android:layout_below="@id/bindin_phone_linearlayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dip"
+        android:background="@color/colorPrimary"
+        android:text="绑    定"
+        android:textColor="@android:color/white"
+        android:textSize="17sp" />
+</RelativeLayout>

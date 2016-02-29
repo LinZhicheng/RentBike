@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
+    android:orientation="vertical">
+
+    <com.android.davidlin.rentbike.usercontrol.CircleImageView
+        android:id="@+id/my_profile_portrait"
+        android:layout_width="120dip"
+        android:layout_height="120dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dip"
+        android:src="@drawable/list_item_thumbnail" />
+
+    <TextView
+        android:id="@+id/my_profile_username"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:gravity="center"
+        android:textSize="18sp" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_profile_myaccount"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="5dip"
+        app:group_title="我的账户" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_profile_myorder"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="1dip"
+        app:group_title="我的订单" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_profile_mybike"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="1dip"
+        app:group_title="我的自行车" />
+
+    <com.android.davidlin.rentbike.usercontrol.GroupTextView
+        android:id="@+id/my_profile_msg"
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:layout_marginTop="1dip"
+        app:group_title="消息" />
+</LinearLayout>

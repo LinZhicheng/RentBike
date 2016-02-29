@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
+    tools:context="com.android.davidlin.rentbike.view.LoginActivity">
+
+    <EditText
+        android:id="@+id/login_userportal"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_marginTop="30dip"
+        android:background="@android:color/white"
+        android:hint="用户名/手机号"
+        android:paddingEnd="10dip"
+        android:paddingStart="10dip"
+        android:singleLine="true"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="fill_parent"
+        android:layout_height="40dip"
+        android:layout_below="@id/login_userportal"
+        android:layout_marginTop="1dip"
+        android:background="@android:color/white"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:paddingEnd="10dip"
+        android:paddingStart="10dip"
+        android:singleLine="true"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/login_confirm"
+        android:layout_width="300dip"
+        android:layout_height="40dip"
+        android:layout_below="@id/login_password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dip"
+        android:background="@color/colorPrimary"
+        android:text="登    录"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/login_forget_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/login_confirm"
+        android:layout_marginStart="15dip"
+        android:layout_marginTop="15dip"
+        android:text="忘记密码"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/login_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/login_confirm"
+        android:layout_marginEnd="15dip"
+        android:layout_marginTop="15dip"
+        android:text="新用户注册"
+        android:textColor="@color/colorPrimary" />
+
+</RelativeLayout>
