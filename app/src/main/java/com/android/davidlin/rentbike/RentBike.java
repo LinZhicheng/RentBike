@@ -61,13 +61,7 @@ public class RentBike extends Application {
 
         networkState = ConnectionUtils.getNetworkState(this);
         SharedPreferences prefs = getSharedPreferences("rentbike_prefs", MODE_PRIVATE);
-//        if (networkState == ConnectionUtils.WIFI_CONNECT) {
-//            isLoadImage = true;
-//            prefs.edit().putBoolean("isLoadImage", RentBike.isLoadImage).apply();
-//            Log.d("RentBike", "isLoadImage is saved");
-//        } else {
         isLoadImage = prefs.getBoolean("isLoadImage", true);
         mImageLoader.setImageCache(new DoubleCache());
-//        }
     }
 }

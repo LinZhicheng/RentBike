@@ -76,7 +76,8 @@ public class BikeDetailActivity extends AppCompatActivity {
         contactOwnerTv = (TextView) findViewById(R.id.bike_detail_contact_owner);
         rentTv = (TextView) findViewById(R.id.bike_detail_rent);
 
-        Bike bike = Bike.from((AVObject) getIntent().getParcelableExtra("bike"));
+        final AVObject object = getIntent().getParcelableExtra("bike");
+        Bike bike = Bike.from(object);
         if (bike.getPic1() != null) {
             final ImageView pic1 = new ImageView(this);
             imageViews.add(pic1);
@@ -99,17 +100,6 @@ public class BikeDetailActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            bike.getPic1().getDataInBackground(new GetDataCallback() {
-//                @Override
-//                public void done(byte[] bytes, AVException e) {
-//                    if (e == null) {
-//                        pic1.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-//
-//                    } else {
-//                        pic1.setImageResource(R.drawable.list_item_thumbnail);
-//                    }
-//                }
-//            });
         }
         if (bike.getPic2() != null) {
             final ImageView pic2 = new ImageView(this);
@@ -125,22 +115,12 @@ public class BikeDetailActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            bike.getPic2().getDataInBackground(new GetDataCallback() {
-//                @Override
-//                public void done(byte[] bytes, AVException e) {
-//                    if (e == null) {
-//                        pic2.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-//                    } else {
-//                        pic2.setImageResource(R.drawable.list_item_thumbnail);
-//                    }
-//                }
-//            });
         }
         if (bike.getPic3() != null) {
             final ImageView pic3 = new ImageView(this);
             imageViews.add(pic3);
-            final String url=bike.getPic3().getUrl();
-            RentBike.mImageLoader.displayImage(url,pic3);
+            final String url = bike.getPic3().getUrl();
+            RentBike.mImageLoader.displayImage(url, pic3);
             pic3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -150,17 +130,6 @@ public class BikeDetailActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-//            bike.getPic3().getDataInBackground(new GetDataCallback() {
-//                @Override
-//                public void done(byte[] bytes, AVException e) {
-//                    if (e == null) {
-//                        pic3.setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
-//
-//                    } else {
-//                        pic3.setImageResource(R.drawable.list_item_thumbnail);
-//                    }
-//                }
-//            });
         }
         Log.d(TAG, "imageViews.size() = " + imageViews.size());
         ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(imageViews);
@@ -310,7 +279,7 @@ public class BikeDetailActivity extends AppCompatActivity {
                 } else {
                     if (null != ownerPhone) {
                         try {
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + ownerPhone));
+                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + ownerPhone));
                             startActivity(intent);
                         } catch (SecurityException e) {
                             Log.e(TAG, e.getMessage());
@@ -326,7 +295,9 @@ public class BikeDetailActivity extends AppCompatActivity {
                 if (RentBike.currentUser == null) {
                     startLoginActivity();
                 } else {
-                    // 进入下订单页面
+                    Intent intent = new Intent(BikeDetailActivity.this, NewOrderActivity.class);
+                    intent.putExtra("bike", object);
+                    startActivity(intent);
                 }
             }
         });
@@ -337,7 +308,6 @@ public class BikeDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case android.R.id.home:
-                //setResult(RESULT_CANCELED);
                 finish();
                 return true;
             default:

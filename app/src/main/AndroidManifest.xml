@@ -69,12 +69,10 @@
             android:name=".view.OrderDetailActivity"
             android:label="订单详情"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".view.LargeImageActivity"
             android:label=""
             android:theme="@style/Theme.AppCompat.Light.Dialog" />
-
 
         <receiver
             android:name=".receiver.NetworkStateReceiver"
@@ -84,6 +82,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".view.NewOrderActivity"></activity>
     </application>
 
 </manifest>
