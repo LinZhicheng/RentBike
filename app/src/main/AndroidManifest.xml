@@ -82,7 +82,10 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".view.NewOrderActivity"></activity>
+        <activity
+            android:name=".view.NewOrderActivity"
+            android:label="新订单"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
