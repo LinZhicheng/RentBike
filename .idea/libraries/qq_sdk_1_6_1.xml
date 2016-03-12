@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="avoscloud-sdk-v3.13.4">
+  <library name="qq.sdk.1.6.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/lib/avoscloud-sdk-v3.13.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/lib/qq.sdk.1.6.1.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

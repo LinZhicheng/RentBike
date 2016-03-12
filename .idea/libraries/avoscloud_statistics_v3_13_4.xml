@@ -1,8 +1,7 @@
 <component name="libraryTable">
   <library name="avoscloud-statistics-v3.13.4">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.leancloud.android/avoscloud-statistics/v3.13.4/jars/classes.jar!/" />
-      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/cn.leancloud.android/avoscloud-statistics/v3.13.4/res" />
+      <root url="jar://$PROJECT_DIR$/app/lib/avoscloud-statistics-v3.13.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

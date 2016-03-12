@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="avoscloud-sdk-v3.13.4">
+  <library name="httpmime-4.2.4">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/app/lib/avoscloud-sdk-v3.13.4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/app/lib/httpmime-4.2.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
