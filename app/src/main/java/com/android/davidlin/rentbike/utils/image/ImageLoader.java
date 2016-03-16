@@ -55,6 +55,8 @@ public class ImageLoader {
         try {
             URL url = new URL(imageUrl);
             final HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
             bitmap = BitmapFactory.decodeStream(connection.getInputStream());
             connection.disconnect();
         } catch (Exception e) {

@@ -1,8 +1,6 @@
 package com.android.davidlin.rentbike.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,6 @@ import android.widget.TextView;
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Bike;
-import com.android.davidlin.rentbike.utils.HttpUtils;
 import com.avos.avoscloud.AVFile;
 
 import java.util.List;

@@ -20,7 +20,13 @@ public class DiskCache implements ImageCache {
 
     @Override
     public Bitmap get(String url) {
-        return BitmapFactory.decodeFile(cacheDir + "/" + url);
+        Bitmap bitmap;
+        try {
+            bitmap = BitmapFactory.decodeFile(cacheDir + "/" + url);
+        } catch (Exception e) {
+            bitmap = null;
+        }
+        return bitmap;
     }
 
     @Override
