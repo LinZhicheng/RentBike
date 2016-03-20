@@ -345,7 +345,8 @@ public class BikeDetailActivity extends AppCompatActivity {
     }
 
     private void startLoginActivity() {
-        // Start LoginActivity
+        Intent intent = new Intent(BikeDetailActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private class ImageViewPagerAdapter extends PagerAdapter {

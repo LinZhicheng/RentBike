@@ -21,7 +21,6 @@
                 android:layout_marginTop="10dp"
                 android:background="@android:color/white"
                 android:gravity="center_vertical"
-                android:hint="brand and type"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@android:color/black"
@@ -35,7 +34,6 @@
                 android:layout_marginTop="1dp"
                 android:background="@android:color/white"
                 android:gravity="center_vertical"
-                android:hint="owner name"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@android:color/black"
@@ -49,35 +47,13 @@
                 android:layout_marginTop="1dp"
                 android:background="@android:color/white"
                 android:gravity="center_vertical"
-                android:hint="attributes"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
                 android:textColor="@android:color/black"
                 android:textSize="20sp" />
 
             <LinearLayout
-                android:id="@+id/new_order_date_layout"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_below="@id/new_order_attrs_tv"
-                android:background="@android:color/white"
-                android:orientation="horizontal">
-
-                <CalendarView
-                    android:id="@+id/new_order_startdatae_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <CalendarView
-                    android:id="@+id/new_order_enddate_cv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/new_order_startdate_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_below="@id/new_order_attrs_tv"
@@ -88,20 +64,49 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="开始日期"
+                    android:text="从"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
+
+                <DatePicker
+                    android:id="@+id/new_order_startdate_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:calendarTextColor="@color/colorPrimary"
+                    android:clickable="true"
+                    android:datePickerMode="calendar" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/new_order_enddate_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/new_order_startdate_layout"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
-                    android:text="结束日期"
+                    android:text="到"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
+
+                <DatePicker
+                    android:id="@+id/new_order_enddate_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:calendarTextColor="@color/colorPrimary"
+                    android:clickable="true"
+                    android:datePickerMode="calendar" />
 
             </LinearLayout>
 
@@ -109,7 +114,8 @@
                 android:id="@+id/new_order_confirm_bt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/new_order_date_layout"
+                android:layout_below="@id/new_order_enddate_layout"
+                android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
                 android:text="提交订单"
                 android:textColor="@android:color/white"
