@@ -24,7 +24,7 @@ public class MainSettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_settings, null);
+        View view = inflater.inflate(R.layout.fragment_main_settings, group);
 
         loadImageSwitch = (Switch) view.findViewById(R.id.settings_load_image);
         loadImageSwitch.setChecked(RentBike.isLoadImage);

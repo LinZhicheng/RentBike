@@ -28,7 +28,7 @@ public class MainToRentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_to_rent, null);
+        View view = inflater.inflate(R.layout.fragment_main_to_rent, group);
         xListView = (XListView) view.findViewById(R.id.to_rent_xlistview);
         bikesLab = new BikesLab(getActivity(), xListView);
 

@@ -26,8 +26,8 @@ import android.widget.Toast;
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Bike;
-import com.android.davidlin.rentbike.utils.image.ImageUtils;
 import com.android.davidlin.rentbike.utils.StringUtils;
+import com.android.davidlin.rentbike.utils.image.ImageUtils;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVGeoPoint;
@@ -73,7 +73,7 @@ public class MainForRentFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_for_rent, null);
+        View view = inflater.inflate(R.layout.fragment_main_for_rent, group);
 
         brandEt = (EditText) view.findViewById(R.id.for_rent_brand);
         typeEt = (EditText) view.findViewById(R.id.for_rent_type);

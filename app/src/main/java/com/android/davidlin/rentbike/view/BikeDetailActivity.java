@@ -81,55 +81,59 @@ public class BikeDetailActivity extends AppCompatActivity {
         if (bike.getPic1() != null) {
             final ImageView pic1 = new ImageView(this);
             imageViews.add(pic1);
-            pic1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(BikeDetailActivity.this,
-                            LargeImageActivity.class);
-                    startActivity(intent);
-                }
-            });
-            final String url = bike.getPic1().getUrl();
-            RentBike.mImageLoader.displayImage(url, pic1);
-            pic1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(BikeDetailActivity.this,
-                            LargeImageActivity.class);
-                    intent.putExtra("imageUrl", url);
-                    startActivity(intent);
-                }
-            });
+            if (RentBike.isLoadImage) {
+                final String url = bike.getPic1().getUrl();
+                RentBike.mImageLoader.displayImage(url, pic1);
+                pic1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(BikeDetailActivity.this,
+                                LargeImageActivity.class);
+                        intent.putExtra("imageUrl", url);
+                        startActivity(intent);
+                    }
+                });
+            } else {
+                pic1.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+            }
         }
         if (bike.getPic2() != null) {
             final ImageView pic2 = new ImageView(this);
             imageViews.add(pic2);
-            final String url = bike.getPic2().getUrl();
-            RentBike.mImageLoader.displayImage(url, pic2);
-            pic2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(BikeDetailActivity.this,
-                            LargeImageActivity.class);
-                    intent.putExtra("imageUrl", url);
-                    startActivity(intent);
-                }
-            });
+            if (RentBike.isLoadImage) {
+                final String url = bike.getPic2().getUrl();
+                RentBike.mImageLoader.displayImage(url, pic2);
+                pic2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(BikeDetailActivity.this,
+                                LargeImageActivity.class);
+                        intent.putExtra("imageUrl", url);
+                        startActivity(intent);
+                    }
+                });
+            } else {
+                pic2.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+            }
         }
         if (bike.getPic3() != null) {
             final ImageView pic3 = new ImageView(this);
             imageViews.add(pic3);
-            final String url = bike.getPic3().getUrl();
-            RentBike.mImageLoader.displayImage(url, pic3);
-            pic3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(BikeDetailActivity.this,
-                            LargeImageActivity.class);
-                    intent.putExtra("imageUrl", url);
-                    startActivity(intent);
-                }
-            });
+            if (RentBike.isLoadImage) {
+                final String url = bike.getPic3().getUrl();
+                RentBike.mImageLoader.displayImage(url, pic3);
+                pic3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(BikeDetailActivity.this,
+                                LargeImageActivity.class);
+                        intent.putExtra("imageUrl", url);
+                        startActivity(intent);
+                    }
+                });
+            } else {
+                pic3.setImageDrawable(getResources().getDrawable(R.mipmap.ic_launcher));
+            }
         }
         Log.d(TAG, "imageViews.size() = " + imageViews.size());
         ImageViewPagerAdapter adapter = new ImageViewPagerAdapter(imageViews);

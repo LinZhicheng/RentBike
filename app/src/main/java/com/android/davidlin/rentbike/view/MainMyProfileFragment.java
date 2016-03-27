@@ -2,11 +2,9 @@ package com.android.davidlin.rentbike.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +15,8 @@ import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.usercontrol.CircleImageView;
 import com.android.davidlin.rentbike.usercontrol.GroupTextView;
-import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVUser;
-import com.avos.avoscloud.GetDataCallback;
 
 /**
  * A {@link android.support.v4.app.Fragment} for user profile
@@ -41,7 +37,7 @@ public class MainMyProfileFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
         super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_my_profile, null);
+        View view = inflater.inflate(R.layout.fragment_main_my_profile, group);
 
         portraitIv = (CircleImageView) view.findViewById(R.id.my_profile_portrait);
         usernameTv = (TextView) view.findViewById(R.id.my_profile_username);

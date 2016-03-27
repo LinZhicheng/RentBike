@@ -3,6 +3,7 @@ package com.android.davidlin.rentbike.utils.image;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,13 +16,18 @@ public class DiskCache implements ImageCache {
     static String cacheDir;
 
     public DiskCache() {
-        cacheDir = Environment.getDataDirectory().getAbsolutePath() + "/RentBike/cache";
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
+            cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/RentBike/cache";
+        } else {
+            cacheDir = Environment.getDataDirectory().getAbsolutePath() + "/RentBike/cache";
+        }
     }
 
     @Override
     public Bitmap get(String url) {
         Bitmap bitmap;
         try {
+            Log.d("url", url);
             bitmap = BitmapFactory.decodeFile(cacheDir + "/" + url);
         } catch (Exception e) {
             bitmap = null;
