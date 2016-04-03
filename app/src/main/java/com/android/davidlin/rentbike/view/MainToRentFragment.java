@@ -23,12 +23,18 @@ public class MainToRentFragment extends Fragment {
 
     private final static String TAG = "ToRentFragment";
     public static BikesLab bikesLab;
+    private View view;
     private XListView xListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
-        super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_to_rent, group);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_main_to_rent, null);
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
         xListView = (XListView) view.findViewById(R.id.to_rent_xlistview);
         bikesLab = new BikesLab(getActivity(), xListView);
 

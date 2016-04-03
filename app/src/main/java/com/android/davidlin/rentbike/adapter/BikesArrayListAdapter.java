@@ -75,19 +75,6 @@ public class BikesArrayListAdapter extends BaseAdapter {
             AVFile pic1 = bike.getPic1();
             String url = pic1.getThumbnailUrl(false, 200, 200);
             RentBike.mImageLoader.displayImage(url, thumbnail);
-//            AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
-//                @Override
-//                protected Bitmap doInBackground(String... params) {
-//                    return HttpUtils.loadThumbnail(params[0]);
-//                }
-//
-//                @Override
-//                protected void onPostExecute(Bitmap bitmap) {
-//                    super.onPostExecute(bitmap);
-//                    thumbnail.setImageBitmap(bitmap);
-//                }
-//            };
-//            task.execute(url);
         }
         return convertView;
     }

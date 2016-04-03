@@ -24,6 +24,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".view.MainActivity"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -73,8 +74,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".view.LargeImageActivity"
-            android:label=""
-            android:theme="@style/Theme.AppCompat.Light.Dialog" />
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
 
         <receiver
             android:name=".receiver.NetworkStateReceiver"

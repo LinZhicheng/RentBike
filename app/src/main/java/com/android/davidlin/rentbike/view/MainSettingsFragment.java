@@ -19,13 +19,19 @@ import com.android.davidlin.rentbike.RentBike;
  */
 public class MainSettingsFragment extends Fragment {
 
+    private View view;
+
     private Switch loadImageSwitch;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
-        super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_settings, group);
-
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_main_settings, null);
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
         loadImageSwitch = (Switch) view.findViewById(R.id.settings_load_image);
         loadImageSwitch.setChecked(RentBike.isLoadImage);
         loadImageSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

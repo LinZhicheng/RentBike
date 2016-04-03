@@ -25,9 +25,8 @@ import com.avos.avoscloud.AVUser;
 public class MainMyProfileFragment extends Fragment {
 
     public static final int REQUEST_CHOOSE_ORDER_TYPE = 0;
-
     private static final String TAG = "MyProfileFragment";
-
+    private View view;
     private CircleImageView portraitIv;
     private TextView usernameTv;
     private GroupTextView accountTv, orderTv, bikesTv, msgTv;
@@ -36,9 +35,13 @@ public class MainMyProfileFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
-        super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_my_profile, group);
-
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_main_my_profile, null);
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
         portraitIv = (CircleImageView) view.findViewById(R.id.my_profile_portrait);
         usernameTv = (TextView) view.findViewById(R.id.my_profile_username);
         accountTv = (GroupTextView) view.findViewById(R.id.my_profile_myaccount);

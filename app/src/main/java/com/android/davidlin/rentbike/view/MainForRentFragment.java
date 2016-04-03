@@ -48,9 +48,8 @@ public class MainForRentFragment extends Fragment {
     public static final int REQUEST_CHOOSE_PICTURE_ACTION = 0;
     public static final int REQUEST_CAMERA = 1;
     public static final int REQUEST_ALBUM = 2;
-
     private static final String TAG = "ForRentFragment";
-
+    private View view;
     private EditText brandEt, typeEt, addressEt, requireEt, attrEt;
     private Spinner ageSpinner;
     private ImageView[] pics = new ImageView[3];
@@ -72,8 +71,13 @@ public class MainForRentFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
-        super.onCreateView(inflater, group, savedInstanceState);
-        View view = inflater.inflate(R.layout.fragment_main_for_rent, group);
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_main_for_rent, null);
+        }
+        ViewGroup parent = (ViewGroup) view.getParent();
+        if (parent != null) {
+            parent.removeView(view);
+        }
 
         brandEt = (EditText) view.findViewById(R.id.for_rent_brand);
         typeEt = (EditText) view.findViewById(R.id.for_rent_type);

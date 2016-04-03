@@ -2,10 +2,8 @@ package com.android.davidlin.rentbike.utils.image;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.util.Log;
 
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -15,21 +13,17 @@ import java.io.IOException;
 public class DiskCache implements ImageCache {
     static String cacheDir;
 
-    public DiskCache() {
-        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            cacheDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/RentBike/cache";
-        } else {
-            cacheDir = Environment.getDataDirectory().getAbsolutePath() + "/RentBike/cache";
-        }
+    public DiskCache(String cacheDir) {
+        DiskCache.cacheDir = cacheDir;
     }
 
     @Override
     public Bitmap get(String url) {
         Bitmap bitmap;
         try {
-            Log.d("url", url);
-            bitmap = BitmapFactory.decodeFile(cacheDir + "/" + url);
+            bitmap = BitmapFactory.decodeFile(cacheDir + "/" + url.hashCode());
         } catch (Exception e) {
+            Log.e("DiskCache get", e.getMessage());
             bitmap = null;
         }
         return bitmap;
@@ -39,16 +33,16 @@ public class DiskCache implements ImageCache {
     public void put(String url, Bitmap bmp) {
         FileOutputStream fileOutputStream = null;
         try {
-            fileOutputStream = new FileOutputStream(cacheDir + "/" + url);
+            fileOutputStream = new FileOutputStream(cacheDir + "/" + url.hashCode());
             bmp.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        } catch (IOException e) {
+            Log.e("DiskCache put", e.getMessage());
         } finally {
             if (fileOutputStream != null) {
                 try {
                     fileOutputStream.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Log.e("DiskCache put", e.getMessage());
                 }
             }
         }

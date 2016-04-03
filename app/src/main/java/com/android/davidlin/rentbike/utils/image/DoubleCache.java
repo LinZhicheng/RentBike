@@ -6,8 +6,13 @@ import android.graphics.Bitmap;
  * Created by I326996 on 1/31/2016.
  */
 public class DoubleCache implements ImageCache {
-    ImageCache mMemoryCache = new MemoryCache();
-    DiskCache mDiskCache = new DiskCache();
+    ImageCache mMemoryCache;
+    DiskCache mDiskCache;
+
+    public DoubleCache(String cacheDir) {
+        mMemoryCache = new MemoryCache();
+        mDiskCache = new DiskCache(cacheDir);
+    }
 
     @Override
     public Bitmap get(String url) {

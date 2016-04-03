@@ -23,7 +23,7 @@ public class PermissionsUtils {
      * <p/>
      * If the app does not has permission then the user will be prompted to grant permissions
      *
-     * @param activity 申请权限的Activity
+     * @param activity 申请权限的Context
      */
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
