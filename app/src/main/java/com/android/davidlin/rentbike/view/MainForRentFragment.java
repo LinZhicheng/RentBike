@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Spinner;
@@ -26,6 +25,7 @@ import android.widget.Toast;
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Bike;
+import com.android.davidlin.rentbike.utils.PermissionsUtils;
 import com.android.davidlin.rentbike.utils.StringUtils;
 import com.android.davidlin.rentbike.utils.image.ImageUtils;
 import com.avos.avoscloud.AVException;
@@ -37,7 +37,6 @@ import com.avos.avoscloud.SaveCallback;
 
 import java.io.File;
 import java.util.Calendar;
-import java.util.Objects;
 
 /**
  * A {@link android.support.v4.app.Fragment} for bike owner to lend bikes
@@ -56,7 +55,7 @@ public class MainForRentFragment extends Fragment {
     private AVFile[] files = new AVFile[3];
     private Button confirmBt, clearBt;
     private TextView priceTv;
-    private ImageButton addPrice, subPrice;
+    private Button addPrice, subPrice;
 
     private TextView pleaseLogin;
     private ScrollView scrollView;
@@ -91,8 +90,8 @@ public class MainForRentFragment extends Fragment {
         confirmBt = (Button) view.findViewById(R.id.for_rent_confirm);
         clearBt = (Button) view.findViewById(R.id.for_rent_clear);
         priceTv = (TextView) view.findViewById(R.id.for_rent_price);
-        addPrice = (ImageButton) view.findViewById(R.id.for_rent_add_price);
-        subPrice = (ImageButton) view.findViewById(R.id.for_rent_sub_price);
+        addPrice = (Button) view.findViewById(R.id.for_rent_add_price);
+        subPrice = (Button) view.findViewById(R.id.for_rent_sub_price);
 
         ageSpinner.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, ages));
 
@@ -254,12 +253,7 @@ public class MainForRentFragment extends Fragment {
                     name = "IMG_" + c.get(Calendar.YEAR) + (c.get(Calendar.MONTH) + 1)
                             + c.get(Calendar.DAY_OF_MONTH) + "_" + c.get(Calendar.HOUR_OF_DAY)
                             + c.get(Calendar.MINUTE) + c.get(Calendar.SECOND) + ".jpg";
-                    if (!Objects.equals(Environment.getExternalStorageState(), Environment.MEDIA_MOUNTED)) {
-                        route = Environment.getDataDirectory().getAbsolutePath() + "/image";
-                    } else {
-                        route = Environment.getExternalStoragePublicDirectory(Environment
-                                .DIRECTORY_DCIM).getAbsolutePath() + "/Camera";
-                    }
+                    route = Environment.DIRECTORY_DCIM + "/Camera";
                     File dir = new File(route);
                     if (!dir.exists()) dir.mkdirs();
                     Intent intent_camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -269,9 +263,9 @@ public class MainForRentFragment extends Fragment {
                     try {
                         startActivityForResult(intent_camera, REQUEST_CAMERA);
                     } catch (SecurityException se) {
-                        Toast.makeText(getActivity(), "调用相机失败", Toast.LENGTH_SHORT).show();
+                        PermissionsUtils.verifyCameraPermission(getActivity());
+                        Toast.makeText(getActivity(), "调用相机失败，请确认权限后重试", Toast.LENGTH_LONG).show();
                         Log.e(TAG, se.getMessage());
-                        return;
                     }
                     break;
                 case PictureActionChooseFragment.CODE_ALBUM:

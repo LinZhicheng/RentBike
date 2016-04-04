@@ -18,12 +18,18 @@ public class PermissionsUtils {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    // Camera Permissions
+    public static final int REQUEST_CAMERA = 0;
+    public static final String[] PERMISSION_CAMERA = {
+            Manifest.permission.CAMERA
+    };
+
     /**
-     * Checks if the app has permission to write to device storage
+     * Checks if the app has permission to write to external storage
      * <p/>
      * If the app does not has permission then the user will be prompted to grant permissions
      *
-     * @param activity 申请权限的Context
+     * @param activity Activity to request permission
      */
     public static void verifyStoragePermissions(Activity activity) {
         // Check if we have write permission
@@ -37,6 +43,21 @@ public class PermissionsUtils {
                     PERMISSIONS_STORAGE,
                     REQUEST_EXTERNAL_STORAGE
             );
+        }
+    }
+
+    /**
+     * Checks if the app has permission to use camera
+     * <p/>
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity Activity to request permission
+     */
+    public static void verifyCameraPermission(Activity activity) {
+        int permission_camera = ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA);
+
+        if (permission_camera != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, PERMISSION_CAMERA, REQUEST_CAMERA);
         }
     }
 }

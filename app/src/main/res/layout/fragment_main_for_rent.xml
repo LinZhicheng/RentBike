@@ -6,23 +6,23 @@
 
     <ScrollView
         android:id="@+id/for_rent_scrollview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="15dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="品牌"
@@ -31,8 +31,8 @@
 
                 <EditText
                     android:id="@+id/for_rent_brand"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:paddingEnd="5dip"
@@ -43,14 +43,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="型号"
@@ -59,8 +59,8 @@
 
                 <EditText
                     android:id="@+id/for_rent_type"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:paddingEnd="5dip"
@@ -71,14 +71,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="车龄"
@@ -87,21 +87,21 @@
 
                 <Spinner
                     android:id="@+id/for_rent_age"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="配件"
@@ -110,8 +110,8 @@
 
                 <EditText
                     android:id="@+id/for_rent_attrs"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:hint="锁、码表、货架、手电筒等"
@@ -123,66 +123,74 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="40dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="价格"
                     android:textColor="@android:color/black"
                     android:textSize="15sp" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:orientation="horizontal">
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/for_rent_sub_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
                         android:layout_gravity="center_vertical"
-                        android:layout_marginStart="15dip"
-                        android:background="@android:color/white"
-                        android:src="@android:drawable/ic_delete" />
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@android:color/white"
+                        android:textSize="25sp" />
 
                     <TextView
                         android:id="@+id/for_rent_price"
-                        android:layout_width="60dip"
-                        android:layout_height="fill_parent"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
                         android:gravity="center"
                         android:text="1"
                         android:textColor="@android:color/black"
                         android:textSize="15sp" />
 
-                    <ImageButton
+                    <Button
                         android:id="@+id/for_rent_add_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
                         android:layout_gravity="center_vertical"
-                        android:background="@android:color/white"
-                        android:src="@android:drawable/ic_input_add" />
+                        android:background="@color/colorPrimary"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@android:color/white"
+                        android:textSize="25sp" />
 
-                </LinearLayout>
+                </RelativeLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="70dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="地址"
@@ -191,8 +199,8 @@
 
                 <EditText
                     android:id="@+id/for_rent_address"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:hint="省、市、区县、街道名称、小区等"
@@ -203,14 +211,14 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="70dip"
                 android:layout_marginTop="1dip"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="100dip"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:background="@android:color/white"
                     android:gravity="center"
                     android:text="要求"
@@ -219,8 +227,8 @@
 
                 <EditText
                     android:id="@+id/for_rent_require"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="1dip"
                     android:background="@android:color/white"
                     android:paddingEnd="5dip"
@@ -230,7 +238,7 @@
             </LinearLayout>
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dip">
 
@@ -261,7 +269,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <Button
@@ -297,7 +305,7 @@
 
     <TextView
         android:id="@+id/for_rent_please_login"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"

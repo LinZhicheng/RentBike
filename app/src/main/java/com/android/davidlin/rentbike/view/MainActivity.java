@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         // 申请磁盘写入权限；6.0+必需，5.x及以下非必需
         PermissionsUtils.verifyStoragePermissions(this);
+        PermissionsUtils.verifyCameraPermission(this);
 
         fragmentTabHost = (FragmentTabHost) findViewById(android.R.id.tabhost);
         fragmentTabHost.setup(this, getSupportFragmentManager(), R.id.main_content);

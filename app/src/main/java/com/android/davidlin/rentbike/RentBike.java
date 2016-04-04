@@ -4,8 +4,8 @@ import android.app.Application;
 import android.content.SharedPreferences;
 
 import com.android.davidlin.rentbike.utils.ConnectionUtils;
+import com.android.davidlin.rentbike.utils.image.DoubleCache;
 import com.android.davidlin.rentbike.utils.image.ImageLoader;
-import com.android.davidlin.rentbike.utils.image.MemoryCache;
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVUser;
 
@@ -61,6 +61,6 @@ public class RentBike extends Application {
 
         cacheDir = getCacheDir().getAbsolutePath();
 
-        mImageLoader.setImageCache(new MemoryCache());
+        mImageLoader.setImageCache(new DoubleCache(cacheDir));
     }
 }
