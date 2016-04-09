@@ -24,6 +24,8 @@ public class Order {
     private String customerId;
     private Date createdAt;
     private Date finishedAt;
+    private Date startDate;
+    private Date endDate;
     private int state = ORDER_STATE_NON_PAYED;
     private int days;
     private int totalPrice;
@@ -137,5 +139,21 @@ public class Order {
 
     public void setTotalPrice(int totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

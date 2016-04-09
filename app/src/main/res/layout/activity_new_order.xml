@@ -14,107 +14,238 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/new_order_bikename_tv"
+            <LinearLayout
+                android:id="@+id/new_order_bikename_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@android:color/white"
-                android:gravity="center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/new_order_owner_tv"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/new_order_bikename_tv"
-                android:layout_marginTop="1dp"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="名称"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/new_order_attrs_tv"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@id/new_order_owner_tv"
-                android:layout_marginTop="1dp"
-                android:background="@android:color/white"
-                android:gravity="center_vertical"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/new_order_bikename_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
 
             <LinearLayout
-                android:id="@+id/new_order_startdate_layout"
+                android:id="@+id/new_order_owner_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/new_order_attrs_tv"
+                android:layout_below="@id/new_order_bikename_layout"
                 android:layout_marginTop="1dp"
                 android:background="@android:color/white"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_weight="4"
                     android:gravity="center"
-                    android:text="从"
+                    android:text="车主"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
-                <DatePicker
-                    android:id="@+id/new_order_startdate_picker"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/new_order_owner_tv"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:calendarTextColor="@color/colorPrimary"
-                    android:clickable="true"
-                    android:datePickerMode="calendar" />
-
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/new_order_enddate_layout"
+                android:id="@+id/new_order_attrs_layout"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/new_order_startdate_layout"
+                android:layout_below="@id/new_order_owner_layout"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:text="配件"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/new_order_attrs_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/new_order_date_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/new_order_attrs_layout"
                 android:layout_marginTop="1dp"
                 android:background="@android:color/white"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:id="@+id/new_order_from_layout"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/new_order_from_tv"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="从"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/new_order_from_bt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/new_order_from_tv"
+                        android:background="@color/colorPrimary"
+                        android:textColor="@android:color/white" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/new_order_to_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/new_order_to_tv"
+                        android:layout_width="40dp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="到"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp" />
+
+                    <Button
+                        android:id="@+id/new_order_to_bt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toEndOf="@id/new_order_to_tv"
+                        android:background="@color/colorPrimary"
+                        android:textColor="@android:color/white" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/new_order_days_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/new_order_date_layout"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
                     android:gravity="center"
-                    android:text="到"
+                    android:text="天数"
                     android:textColor="@android:color/black"
                     android:textSize="20sp" />
 
-                <DatePicker
-                    android:id="@+id/new_order_enddate_picker"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/new_order_days_tv"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:calendarTextColor="@color/colorPrimary"
-                    android:clickable="true"
-                    android:datePickerMode="calendar" />
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="天"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/new_order_price_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/new_order_days_layout"
+                android:layout_marginTop="1dp"
+                android:background="@android:color/white">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="总价"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/new_order_price_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="元"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <Button
                 android:id="@+id/new_order_confirm_bt"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_below="@id/new_order_enddate_layout"
+                android:layout_below="@id/new_order_price_layout"
                 android:layout_marginTop="10dp"
                 android:background="@color/colorPrimary"
                 android:text="提交订单"

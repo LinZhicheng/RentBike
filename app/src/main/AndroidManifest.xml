@@ -5,40 +5,24 @@
     <!-- 在6.0+中，除了申请Permission，还需要在写入文件前在Java代码中申请权限 -->
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.CALL_PHONE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <!--Android 6.0+ Permission-->
+    <!-- Android 6.0+ Permission -->
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_FINE_LOCATION" />
-
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission-sdk-23 android:name="android.permission.CALL_PHONE" />
-
     <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
-
     <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
-
     <uses-permission-sdk-23 android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission-sdk-23 android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
     <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -114,6 +98,10 @@
         <activity
             android:name=".view.NewOrderActivity"
             android:label="新订单"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".FinishOrderActivity"
+            android:label="订单创建成功"
             android:screenOrientation="portrait" />
     </application>
 
