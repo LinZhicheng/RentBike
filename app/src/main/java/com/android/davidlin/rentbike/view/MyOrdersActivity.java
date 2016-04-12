@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
@@ -17,6 +18,7 @@ public class MyOrdersActivity extends AppCompatActivity {
 
     public static OrdersLab ordersLab;
     private ListView listView;
+    private TextView emptyTv;
     private String type;
 
     @Override
@@ -29,6 +31,9 @@ public class MyOrdersActivity extends AppCompatActivity {
         type = getIntent().getStringExtra("type");
 
         listView = (ListView) findViewById(android.R.id.list);
+        emptyTv = (TextView) findViewById(android.R.id.empty);
+        listView.setEmptyView(emptyTv);
+
         ordersLab = new OrdersLab(this, listView);
         ordersLab.queryData(RentBike.currentUser.getObjectId(), type);
 

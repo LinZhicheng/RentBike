@@ -50,6 +50,9 @@ public class Bike {
 
     public static AVObject to(Bike bike) {
         AVObject avObject = new AVObject("BikeRecord");
+        if (bike.getObjectId() != null && bike.getObjectId() != "") {
+            avObject.setObjectId(bike.getObjectId());
+        }
         avObject.put("brand", bike.getBrand());
         avObject.put("bikeType", bike.getType());
         avObject.put("bikeAttrs", bike.getAttrs());

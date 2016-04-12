@@ -1,9 +1,7 @@
 package com.android.davidlin.rentbike.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +15,6 @@ import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Bike;
 import com.android.davidlin.rentbike.model.Order;
-import com.android.davidlin.rentbike.utils.HttpUtils;
 import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVFile;
 import com.avos.avoscloud.AVObject;
@@ -91,19 +88,6 @@ public class OrdersArrayListAdapter extends BaseAdapter {
                     if (picture != null) {
                         String url = picture.getThumbnailUrl(false, 200, 200);
                         RentBike.mImageLoader.displayImage(url, thumbnail);
-//                        AsyncTask<String, Integer, Bitmap> task = new AsyncTask<String, Integer, Bitmap>() {
-//                            @Override
-//                            protected Bitmap doInBackground(String... params) {
-//                                return HttpUtils.loadThumbnail(params[0]);
-//                            }
-//
-//                            @Override
-//                            protected void onPostExecute(Bitmap bitmap) {
-//                                super.onPostExecute(bitmap);
-//                                thumbnail.setImageBitmap(bitmap);
-//                            }
-//                        };
-//                        task.execute(url);
                     }
                     Log.d(TAG, "get object success");
                 } else {

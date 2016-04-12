@@ -37,8 +37,10 @@ public class Order {
         order.setCustomerId(avObject.getString("customerId"));
         order.setOwnerId(avObject.getString("ownerId"));
         order.setDays(avObject.getInt("days"));
+        order.setStartDate(avObject.getDate("startDate"));
+        order.setEndDate(avObject.getDate("endDate"));
         Date finishedAt = avObject.getDate("finishedAt");
-        order.setFinishedAt(finishedAt != null ? finishedAt : null);
+        order.setFinishedAt(null != finishedAt ? finishedAt : null);
         order.setState(avObject.getInt("state"));
         order.setTotalPrice(avObject.getInt("totalPrice"));
         order.setCreatedAt(avObject.getCreatedAt());
@@ -47,10 +49,15 @@ public class Order {
 
     public static AVObject to(Order order) {
         AVObject avObject = new AVObject("OrderRecord");
+        if (order.getObjectId() != null && order.getObjectId() != "") {
+            avObject.setObjectId(order.getObjectId());
+        }
         avObject.put("bikeId", order.getBikeId());
         avObject.put("customerId", order.getCustomerId());
         avObject.put("ownerId", order.getOwnerId());
         avObject.put("days", order.getDays());
+        avObject.put("startDate", order.getStartDate());
+        avObject.put("endDate", order.getEndDate());
         avObject.put("finishedAt", null);
         avObject.put("state", order.getState());
         avObject.put("totalPrice", order.getTotalPrice());
@@ -93,7 +100,7 @@ public class Order {
         Calendar c = Calendar.getInstance();
         c.setTime(createdAt);
         return (c.get(Calendar.YEAR) + "-")
-                + c.get(Calendar.MONTH) + "-"
+                + (c.get(Calendar.MONTH) + 1) + "-"
                 + c.get(Calendar.DAY_OF_MONTH)
                 + " " + c.get(Calendar.HOUR_OF_DAY)
                 + ":" + c.get(Calendar.MINUTE);
@@ -104,10 +111,12 @@ public class Order {
     }
 
     public String getFinishedAt() {
+        if (finishedAt == null)
+            return "未完成";
         Calendar c = Calendar.getInstance();
         c.setTime(finishedAt);
         return (c.get(Calendar.YEAR) + "-")
-                + c.get(Calendar.MONTH) + "-"
+                + (c.get(Calendar.MONTH) + 1) + "-"
                 + c.get(Calendar.DAY_OF_MONTH)
                 + " " + c.get(Calendar.HOUR_OF_DAY)
                 + ":" + c.get(Calendar.MINUTE);

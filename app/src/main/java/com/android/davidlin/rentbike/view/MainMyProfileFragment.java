@@ -88,18 +88,6 @@ public class MainMyProfileFragment extends Fragment {
             } else {
                 String url = portrait.getUrl();
                 RentBike.mImageLoader.displayImage(url, portraitIv);
-//                portrait.getDataInBackground(new GetDataCallback() {
-//                    @Override
-//                    public void done(byte[] bytes, AVException e) {
-//                        if (e == null) {
-//                            portraitIv.setImageBitmap(BitmapFactory
-//                                    .decodeByteArray(bytes, 0, bytes.length));
-//                            Log.d(TAG, "get portrait success");
-//                        } else {
-//                            Log.e(TAG, e.getMessage());
-//                        }
-//                    }
-//                });
             }
             usernameTv.setText(currentUser.getUsername());
             usernameTv.setOnClickListener(null);

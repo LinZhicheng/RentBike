@@ -28,8 +28,9 @@ public class OrdersLab {
     private AVQuery<AVObject> query = new AVQuery<>("OrderRecord");
 
     public OrdersLab(Context context, ListView listView) {
-        adapter = new OrdersArrayListAdapter(context, orders);
+        this.adapter = new OrdersArrayListAdapter(context, orders);
         this.listView = listView;
+        listView.setAdapter(this.adapter);
     }
 
     public void queryData(String userId, String type) {
@@ -38,7 +39,18 @@ public class OrdersLab {
         query.orderByDescending("updatedAt");
         query.setCachePolicy(AVQuery.CachePolicy.NETWORK_ELSE_CACHE);
         query.setMaxCacheAge(600000);
-        query.whereEqualTo(type, userId);
+        String str;
+        switch (type) {
+            case "user":
+                str = "customerId";
+                break;
+            case "owner":
+                str = "ownerId";
+                break;
+            default:
+                str = "";
+        }
+        query.whereEqualTo(str, userId);
         query.findInBackground(new FindCallback<AVObject>() {
             @Override
             public void done(List<AVObject> list, AVException e) {

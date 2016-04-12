@@ -37,7 +37,7 @@ public class NewOrderActivity extends AppCompatActivity {
 
     private int startYear, startMonth, startDay, endYear, endMonth, endDay, price;
     private Date startDate, endDate;
-    private long days;
+    private long days = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,7 @@ public class NewOrderActivity extends AppCompatActivity {
         daysTv = (TextView) findViewById(R.id.new_order_days_tv);
         priceTv = (TextView) findViewById(R.id.new_order_price_tv);
         priceTv.setText(String.valueOf(bike.getPrice()));
+        price = bike.getPrice();
 
         fromBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +168,21 @@ public class NewOrderActivity extends AppCompatActivity {
         confirmBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (startDate == null) {
+                    try {
+                        startDate = simpleDateFormat.parse(fromBt.getText().toString());
+                    } catch (ParseException e) {
+                        Log.e("NewOrderActivity", e.getMessage());
+                    }
+                }
+                if (endDate == null) {
+                    try {
+                        endDate = new Date();
+                        endDate.setTime(simpleDateFormat.parse(fromBt.getText().toString()).getTime() + 86399999);
+                    } catch (ParseException e) {
+                        Log.e("NewOrderActivity", e.getMessage());
+                    }
+                }
                 Order order = new Order();
                 order.setBikeId(bike.getObjectId());
                 order.setCustomerId(RentBike.currentUser.getObjectId());
@@ -176,6 +192,7 @@ public class NewOrderActivity extends AppCompatActivity {
                 order.setCreatedAt(c.getTime());
                 order.setStartDate(startDate);
                 order.setEndDate(endDate);
+                order.setFinishedAt(null);
                 final AVObject avObject = Order.to(order);
                 avObject.saveInBackground(new SaveCallback() {
                     @Override
