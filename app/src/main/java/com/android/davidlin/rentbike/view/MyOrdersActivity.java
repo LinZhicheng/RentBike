@@ -42,6 +42,7 @@ public class MyOrdersActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MyOrdersActivity.this, OrderDetailActivity.class);
                 intent.putExtra("order", ordersLab.getItem(position));
+                intent.putExtra("type", type);
                 Log.d("MyOrdersActivity", "ItemId = " + position);
                 startActivity(intent);
             }

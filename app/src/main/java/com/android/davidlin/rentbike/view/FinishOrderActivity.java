@@ -1,4 +1,4 @@
-package com.android.davidlin.rentbike;
+package com.android.davidlin.rentbike.view;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,8 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.android.davidlin.rentbike.view.MainActivity;
-import com.android.davidlin.rentbike.view.OrderDetailActivity;
+import com.android.davidlin.rentbike.R;
 import com.avos.avoscloud.AVObject;
 
 public class FinishOrderActivity extends AppCompatActivity {
@@ -36,6 +35,7 @@ public class FinishOrderActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(FinishOrderActivity.this, OrderDetailActivity.class);
                 intent.putExtra("order", avObject);
+                intent.putExtra("type", "user");
                 startActivity(intent);
             }
         });

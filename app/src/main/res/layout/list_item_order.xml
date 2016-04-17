@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/darker_gray">
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/darker_gray">
 
     <RelativeLayout
         android:id="@+id/order_list_relative1"
@@ -18,7 +18,7 @@
             android:layout_marginStart="10dip"
             android:gravity="center"
             android:textColor="@android:color/black"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/order_list_item_state"
@@ -28,7 +28,7 @@
             android:layout_marginEnd="10dip"
             android:gravity="center"
             android:textColor="@color/colorPrimary"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
     </RelativeLayout>
 
@@ -44,7 +44,8 @@
             android:id="@+id/order_list_item_thumbnail"
             android:layout_width="100dip"
             android:layout_height="100dip"
-            android:src="@drawable/list_item_thumbnail" />
+            android:layout_centerVertical="true"
+            android:src="@drawable/list_item_thumbnail"/>
 
         <TextView
             android:id="@+id/order_list_item_createdat"
@@ -53,7 +54,7 @@
             android:layout_marginStart="10dip"
             android:layout_marginTop="10dip"
             android:layout_toEndOf="@id/order_list_item_thumbnail"
-            android:textSize="18sp" />
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/order_list_item_finishedat"
@@ -63,7 +64,7 @@
             android:layout_marginStart="10dip"
             android:layout_marginTop="10dip"
             android:layout_toEndOf="@id/order_list_item_thumbnail"
-            android:textSize="18sp" />
+            android:textSize="16sp"/>
 
         <TextView
             android:id="@+id/order_list_item_totalprice"
@@ -73,26 +74,7 @@
             android:layout_marginStart="10dip"
             android:layout_marginTop="10dip"
             android:layout_toEndOf="@id/order_list_item_thumbnail"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/order_list_relative2"
-        android:layout_marginTop="1dip"
-        android:background="@android:color/white">
-
-        <Button
-            android:id="@+id/order_list_item_comment_button"
-            style="@style/CommentButtonTheme"
-            android:layout_width="wrap_content"
-            android:layout_height="35dip"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="4dip"
-            android:layout_marginEnd="10dip"
-            android:layout_marginTop="4dip" />
+            android:textSize="16sp"/>
 
     </RelativeLayout>
 

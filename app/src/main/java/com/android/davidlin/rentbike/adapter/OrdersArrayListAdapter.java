@@ -1,13 +1,11 @@
 package com.android.davidlin.rentbike.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -65,15 +63,6 @@ public class OrdersArrayListAdapter extends BaseAdapter {
         TextView createdat = (TextView) convertView.findViewById(R.id.order_list_item_createdat);
         TextView finishedat = (TextView) convertView.findViewById(R.id.order_list_item_finishedat);
         TextView totalPrice = (TextView) convertView.findViewById(R.id.order_list_item_totalprice);
-        Button commentButton = (Button) convertView.findViewById(R.id.order_list_item_comment_button);
-        commentButton.setVisibility(View.INVISIBLE);
-        commentButton.setEnabled(false);
-        commentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // StartWriteCommentActivity
-            }
-        });
 
         Order order = orders.get(position);
         String bikeId = order.getBikeId();
@@ -85,9 +74,11 @@ public class OrdersArrayListAdapter extends BaseAdapter {
                     Bike bike = Bike.from(avObject);
                     title.setText(bike.getBrand() + " " + bike.getType());
                     AVFile picture = bike.getPic1();
-                    if (picture != null) {
-                        String url = picture.getThumbnailUrl(false, 200, 200);
+                    if (picture != null && RentBike.isLoadImage) {
+                        String url = picture.getThumbnailUrl(true, 200, 200);
                         RentBike.mImageLoader.displayImage(url, thumbnail);
+                    } else {
+                        thumbnail.setImageResource(R.mipmap.ic_launcher);
                     }
                     Log.d(TAG, "get object success");
                 } else {
@@ -110,15 +101,9 @@ public class OrdersArrayListAdapter extends BaseAdapter {
                 break;
             case Order.ORDER_STATE_WAITING_COMMENT:
                 state.setText("待评价");
-                commentButton.setEnabled(true);
-                commentButton.setVisibility(View.VISIBLE);
                 break;
             case Order.ORDER_STATE_HAVE_COMMENT:
                 state.setText("已评价");
-                commentButton.setBackgroundColor(Color.LTGRAY);
-                commentButton.setTextColor(Color.GRAY);
-                commentButton.setEnabled(false);
-                commentButton.setVisibility(View.VISIBLE);
                 break;
         }
         createdat.setText("下单时间：" + order.getCreatedAt());

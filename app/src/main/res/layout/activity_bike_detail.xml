@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/lighter_gray"
-    tools:context="com.android.davidlin.rentbike.view.BikeDetailActivity">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/lighter_gray"
+                tools:context="com.android.davidlin.rentbike.view.BikeDetailActivity">
 
     <ScrollView
         android:id="@+id/bike_detail_scrollview"
@@ -25,7 +25,7 @@
                 <android.support.v4.view.ViewPager
                     android:id="@+id/bike_detail_viewpager"
                     android:layout_width="fill_parent"
-                    android:layout_height="255dip" />
+                    android:layout_height="255dip"/>
 
                 <LinearLayout
                     android:id="@+id/bike_detail_indicator"
@@ -33,7 +33,7 @@
                     android:layout_height="15dip"
                     android:layout_marginTop="240dip"
                     android:gravity="center_horizontal"
-                    android:orientation="horizontal" />
+                    android:orientation="horizontal"/>
 
             </RelativeLayout>
 
@@ -47,7 +47,7 @@
                 android:paddingEnd="15dip"
                 android:paddingStart="15dip"
                 android:textColor="@android:color/holo_red_light"
-                android:textSize="25sp" />
+                android:textSize="25sp"/>
 
             <TextView
                 android:id="@+id/bike_detail_detail_title"
@@ -61,7 +61,7 @@
                 android:paddingStart="15dip"
                 android:text="车辆详情"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
 
             <!-- list of detail usercontrol-->
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
@@ -70,42 +70,42 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_title"
                 android:layout_marginTop="1dip"
-                app:key="品牌" />
+                app:key="品牌"/>
 
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
                 android:id="@+id/bike_detail_detail_type"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_brand"
-                app:key="型号" />
+                app:key="型号"/>
 
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
                 android:id="@+id/bike_detail_detail_age"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_type"
-                app:key="车龄" />
+                app:key="车龄"/>
 
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
                 android:id="@+id/bike_detail_detail_attrs"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_age"
-                app:key="配件" />
+                app:key="配件"/>
 
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
                 android:id="@+id/bike_detail_detail_require"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_attrs"
-                app:key="车主要求" />
+                app:key="车主要求"/>
 
             <com.android.davidlin.rentbike.usercontrol.KeyValueTextView
                 android:id="@+id/bike_detail_detail_address"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/bike_detail_detail_require"
-                app:key="地址" />
+                app:key="地址"/>
 
             <TextView
                 android:id="@+id/bike_detail_owner_title"
@@ -119,7 +119,7 @@
                 android:paddingStart="15dip"
                 android:text="车主信息"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
 
             <RelativeLayout
                 android:id="@+id/bike_detail_owner_msg"
@@ -136,7 +136,7 @@
                     android:layout_marginBottom="15dip"
                     android:layout_marginStart="25dip"
                     android:layout_marginTop="15dip"
-                    android:src="@drawable/list_item_thumbnail" />
+                    android:src="@drawable/list_item_thumbnail"/>
 
                 <TextView
                     android:id="@+id/bike_detail_owner_name"
@@ -145,7 +145,7 @@
                     android:layout_marginEnd="25dip"
                     android:layout_marginStart="15dip"
                     android:layout_marginTop="20dip"
-                    android:layout_toEndOf="@id/bike_detail_owner_portrait" />
+                    android:layout_toEndOf="@id/bike_detail_owner_portrait"/>
 
                 <TextView
                     android:id="@+id/bike_detail_owner_phone"
@@ -155,7 +155,7 @@
                     android:layout_marginEnd="25dip"
                     android:layout_marginStart="15dip"
                     android:layout_marginTop="10dip"
-                    android:layout_toEndOf="@id/bike_detail_owner_portrait" />
+                    android:layout_toEndOf="@id/bike_detail_owner_portrait"/>
 
             </RelativeLayout>
 
@@ -171,7 +171,7 @@
                 android:paddingStart="15dip"
                 android:text="用户评论"
                 android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+                android:textSize="18sp"/>
 
             <RelativeLayout
                 android:id="@+id/bike_detail_comment_msg"
@@ -188,7 +188,7 @@
                     android:layout_marginStart="25dip"
                     android:layout_marginTop="15dip"
                     android:src="@drawable/list_item_thumbnail"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/bike_detail_customer_name"
@@ -197,7 +197,7 @@
                     android:layout_marginEnd="25dip"
                     android:layout_marginTop="15dip"
                     android:layout_toEndOf="@id/bike_detail_customer_portrait"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/bike_detail_customer_rank"
@@ -207,7 +207,7 @@
                     android:layout_marginEnd="25dip"
                     android:layout_marginTop="5dip"
                     android:layout_toEndOf="@id/bike_detail_customer_portrait"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/bike_detail_customer_comment"
@@ -219,7 +219,7 @@
                     android:paddingEnd="15dip"
                     android:paddingStart="15dip"
                     android:paddingTop="10dip"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
             </RelativeLayout>
 
@@ -229,12 +229,11 @@
                 android:layout_height="40dip"
                 android:layout_below="@id/bike_detail_comment_msg"
                 android:layout_marginBottom="15dip"
-                android:layout_marginTop="1dip"
                 android:background="@android:color/white"
                 android:enabled="false"
                 android:gravity="center"
                 android:text="暂无评论"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
 
         </RelativeLayout>
 
@@ -251,7 +250,7 @@
             android:id="@+id/bike_detail_favorite"
             android:layout_width="40dip"
             android:layout_height="fill_parent"
-            android:src="@drawable/list_item_thumbnail" />
+            android:src="@drawable/list_item_thumbnail"/>
 
         <TextView
             android:id="@+id/bike_detail_contact_owner"
@@ -262,7 +261,7 @@
             android:gravity="center"
             android:text="联系车主"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
         <TextView
             android:id="@+id/bike_detail_rent"
@@ -275,7 +274,7 @@
             android:gravity="center"
             android:text="立即租车"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="18sp"/>
 
     </RelativeLayout>
 

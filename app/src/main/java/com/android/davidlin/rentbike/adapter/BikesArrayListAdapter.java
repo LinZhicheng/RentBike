@@ -73,7 +73,7 @@ public class BikesArrayListAdapter extends BaseAdapter {
 
         if (bike.getPic1() != null && RentBike.isLoadImage) {
             AVFile pic1 = bike.getPic1();
-            String url = pic1.getThumbnailUrl(false, 200, 200);
+            String url = pic1.getThumbnailUrl(true, 200, 200);
             RentBike.mImageLoader.displayImage(url, thumbnail);
         }
         return convertView;

@@ -12,7 +12,6 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.davidlin.rentbike.FinishOrderActivity;
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Bike;
@@ -111,6 +110,12 @@ public class NewOrderActivity extends AppCompatActivity {
                         startDay = dayOfMonth;
                         fromBt.setText(startYear + "-" + startMonth + "-" + startDay);
                         toBt.setText(startYear + "-" + startMonth + "-" + startDay);
+                        try {
+                            startDate = simpleDateFormat.parse(fromBt.getText().toString());
+                        } catch (ParseException e) {
+                            Log.e("NewOrderActivity", "parse date error");
+                            Toast.makeText(NewOrderActivity.this, "日期解析错误", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }, fromCal.get(Calendar.YEAR), fromCal.get(Calendar.MONTH), fromCal.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -119,6 +124,19 @@ public class NewOrderActivity extends AppCompatActivity {
         toBt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (startDate == null) {
+                    try {
+                        startDate = simpleDateFormat.parse(fromBt.getText().toString());
+                        Calendar startCal = Calendar.getInstance();
+                        startCal.setTime(startDate);
+                        startYear = startCal.get(Calendar.YEAR);
+                        startMonth = startCal.get(Calendar.MONTH) + 1;
+                        startDay = startCal.get(Calendar.DAY_OF_MONTH);
+                    } catch (ParseException e) {
+                        Log.e("NewOrderActivity", "parse date error");
+                        Toast.makeText(NewOrderActivity.this, "日期解析错误", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 Calendar toCal = Calendar.getInstance();
                 try {
                     Date fromDate = simpleDateFormat.parse(toBt.getText().toString());
@@ -136,7 +154,7 @@ public class NewOrderActivity extends AppCompatActivity {
                                     Toast.makeText(NewOrderActivity.this, "还车日期不能早于借车日期", Toast.LENGTH_LONG).show();
                                     return;
                                 }
-                            } else if (monthOfYear < startMonth) {
+                            } else if (monthOfYear + 1 < startMonth) {
                                 Toast.makeText(NewOrderActivity.this, "还车月份不能早于借车月份", Toast.LENGTH_LONG).show();
                                 return;
                             }
@@ -149,7 +167,6 @@ public class NewOrderActivity extends AppCompatActivity {
                         endDay = dayOfMonth;
                         toBt.setText(endYear + "-" + endMonth + "-" + endDay);
                         try {
-                            startDate = simpleDateFormat.parse(fromBt.getText().toString());
                             endDate = simpleDateFormat.parse(toBt.getText().toString());
                             days = ((endDate.getTime() - startDate.getTime() + 1000000) / (3600 * 24 * 1000)) + 1;
                             daysTv.setText(String.valueOf(days));

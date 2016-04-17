@@ -56,8 +56,8 @@ public class Order {
         avObject.put("customerId", order.getCustomerId());
         avObject.put("ownerId", order.getOwnerId());
         avObject.put("days", order.getDays());
-        avObject.put("startDate", order.getStartDate());
-        avObject.put("endDate", order.getEndDate());
+        avObject.put("startDate", order.getStartdate());
+        avObject.put("endDate", order.getEnddate());
         avObject.put("finishedAt", null);
         avObject.put("state", order.getState());
         avObject.put("totalPrice", order.getTotalPrice());
@@ -97,9 +97,10 @@ public class Order {
     }
 
     public String getCreatedAt() {
+        if (createdAt == null) return null;
         Calendar c = Calendar.getInstance();
         c.setTime(createdAt);
-        return (c.get(Calendar.YEAR) + "-")
+        return c.get(Calendar.YEAR) + "-"
                 + (c.get(Calendar.MONTH) + 1) + "-"
                 + c.get(Calendar.DAY_OF_MONTH)
                 + " " + c.get(Calendar.HOUR_OF_DAY)
@@ -150,19 +151,42 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Date getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        if (startDate == null) return null;
+        Calendar c = Calendar.getInstance();
+        c.setTime(startDate);
+        return c.get(Calendar.YEAR) + "-"
+                + (c.get(Calendar.MONTH) + 1) + "-"
+                + c.get(Calendar.DAY_OF_MONTH)
+                + " " + c.get(Calendar.HOUR_OF_DAY)
+                + ":" + c.get(Calendar.MINUTE);
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
-        return endDate;
+    public Date getStartdate() {
+        return startDate;
+    }
+
+    public String getEndDate() {
+        if (endDate == null)
+            return "未完成";
+        Calendar c = Calendar.getInstance();
+        c.setTime(endDate);
+        return (c.get(Calendar.YEAR) + "-")
+                + (c.get(Calendar.MONTH) + 1) + "-"
+                + c.get(Calendar.DAY_OF_MONTH)
+                + " " + c.get(Calendar.HOUR_OF_DAY)
+                + ":" + c.get(Calendar.MINUTE);
     }
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public Date getEnddate() {
+        return endDate;
     }
 }

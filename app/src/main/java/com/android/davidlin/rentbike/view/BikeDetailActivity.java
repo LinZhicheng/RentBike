@@ -325,7 +325,6 @@ public class BikeDetailActivity extends AppCompatActivity {
      *
      * @param length 根据图片数量确定小圆点的个数
      */
-
     private void initIndicator(int length) {
 
         ImageView imgView;
