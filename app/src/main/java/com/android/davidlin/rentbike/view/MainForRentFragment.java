@@ -36,7 +36,7 @@ import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.SaveCallback;
 
 import java.io.File;
-import java.util.Calendar;
+import java.util.UUID;
 
 /**
  * A {@link android.support.v4.app.Fragment} for bike owner to lend bikes
@@ -249,11 +249,13 @@ public class MainForRentFragment extends Fragment {
             int action_code = data.getIntExtra(PictureActionChooseFragment.EXTRA_PICTURE_ACTION, -1);
             switch (action_code) {
                 case PictureActionChooseFragment.CODE_CAMERA:
-                    Calendar c = Calendar.getInstance();
-                    name = "IMG_" + c.get(Calendar.YEAR) + (c.get(Calendar.MONTH) + 1)
-                            + c.get(Calendar.DAY_OF_MONTH) + "_" + c.get(Calendar.HOUR_OF_DAY)
-                            + c.get(Calendar.MINUTE) + c.get(Calendar.SECOND) + ".jpg";
-                    route = Environment.DIRECTORY_DCIM + "/Camera";
+                    if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())
+                            || !Environment.isExternalStorageRemovable()) {
+                        route = getActivity().getExternalFilesDir(null).getPath();
+                    } else {
+                        route = getActivity().getFilesDir().getPath();
+                    }
+                    name = UUID.randomUUID().toString();
                     File dir = new File(route);
                     if (!dir.exists()) dir.mkdirs();
                     Intent intent_camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);

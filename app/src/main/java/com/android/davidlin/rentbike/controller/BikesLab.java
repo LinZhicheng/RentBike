@@ -1,5 +1,6 @@
 package com.android.davidlin.rentbike.controller;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 
@@ -11,8 +12,11 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Controller of Bike
@@ -27,13 +31,15 @@ public class BikesLab {
     private XListView listView;
     private AVQuery<AVObject> query = new AVQuery<>("BikeRecord");
     private int hasQueried = 0;
+    private ProgressDialog dialog;
 
     public BikesLab(Context context, XListView listView) {
-        adapter = new BikesArrayListAdapter(context, bikes);
         this.listView = listView;
+        this.dialog = new ProgressDialog(context);
     }
 
     public void queryData() {
+        dialog.create();
         query.setLimit(20);
         query.setSkip(hasQueried);
         query.orderByDescending("updatedAt");
@@ -46,26 +52,29 @@ public class BikesLab {
                     for (AVObject avObject : list) {
                         bikes.add(Bike.from(avObject));
                     }
-                    if (listView.getAdapter() == null)
-                        listView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
                     setHasQueried(getHasQueried() + list.size());
-                    if (list.size() < 20)
+                    if (list.size() < 20) {
                         listView.setPullLoadEnable(false);
-                    Log.d(TAG, "list binding success");
+                    } else {
+                        listView.setPullLoadEnable(true);
+                    }
                     listView.stopRefresh();
                     listView.stopLoadMore();
-                    listView.setRefreshTime("刚刚");
+                    listView.setRefreshTime(new SimpleDateFormat("MM/dd hh:mm", Locale.CHINA).format(new Date()));
                 } else {
                     Log.e(TAG, e.getMessage());
                 }
+                adapter.notifyDataSetChanged();
+                dialog.dismiss();
             }
         });
     }
 
-    public void refresh() {
+    public void refresh(Context context) {
         setHasQueried(0);
         bikes.clear();
+        adapter = new BikesArrayListAdapter(context, bikes);
+        listView.setAdapter(adapter);
         queryData();
     }
 
