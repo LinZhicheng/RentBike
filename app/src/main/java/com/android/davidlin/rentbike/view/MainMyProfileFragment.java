@@ -107,7 +107,8 @@ public class MainMyProfileFragment extends Fragment {
             bikesTv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // MyBikesActivity
+                    Intent intent = new Intent(getActivity(), MyBikesActivity.class);
+                    startActivity(intent);
                 }
             });
             msgTv.setOnClickListener(new View.OnClickListener() {
