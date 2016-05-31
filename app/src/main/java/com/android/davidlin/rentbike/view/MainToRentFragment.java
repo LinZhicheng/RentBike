@@ -47,7 +47,7 @@ public class MainToRentFragment extends Fragment {
                     xListView.stopRefresh();
                     return;
                 }
-                bikesLab.refresh();
+                bikesLab.refresh(getActivity());
             }
 
             @Override
@@ -69,13 +69,17 @@ public class MainToRentFragment extends Fragment {
                 startActivityForResult(intent, RentBike.BIKEDETAILACTIVITY);
             }
         });
+        return view;
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
         if (RentBike.networkState == ConnectionUtils.NO_NETWORK)
             Toast.makeText(getActivity(), "没有网络连接，请检查你的设置",
                     Toast.LENGTH_SHORT).show();
         else
-            bikesLab.refresh();
-        return view;
+            bikesLab.refresh(getActivity());
     }
 
     @Override

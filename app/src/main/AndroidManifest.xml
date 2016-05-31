@@ -102,6 +102,8 @@
             android:name=".view.FinishOrderActivity"
             android:label="订单创建成功"
             android:screenOrientation="portrait"/>
+        <activity android:name=".view.MyBikesActivity">
+        </activity>
     </application>
 
 </manifest>
