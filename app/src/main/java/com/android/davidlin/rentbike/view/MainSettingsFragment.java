@@ -1,17 +1,23 @@
 package com.android.davidlin.rentbike.view;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
 import com.android.davidlin.rentbike.R;
 import com.android.davidlin.rentbike.RentBike;
+
+import java.io.File;
 
 /**
  * A {@link android.support.v4.app.Fragment} for application settings
@@ -22,6 +28,10 @@ public class MainSettingsFragment extends Fragment {
     private View view;
 
     private Switch loadImageSwitch;
+    private RelativeLayout clearCacheLayout;
+    private TextView clearCacheTv;
+    private File cacheFolder;
+    private File extCacheFolder;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup group, Bundle savedInstanceState) {
@@ -44,6 +54,47 @@ public class MainSettingsFragment extends Fragment {
             }
         });
 
+        clearCacheLayout = (RelativeLayout) view.findViewById(R.id.settings_clear_cache_layout);
+        clearCacheTv = (TextView) view.findViewById(R.id.settings_clear_cache_tv);
+        cacheFolder = getActivity().getCacheDir();
+        extCacheFolder = getActivity().getExternalCacheDir();
+
+        clearCacheTv.setText(getCacheSize());
+
+        clearCacheLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(getActivity())
+                        .setMessage("确定清除缓存？")
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                                cacheFolder.delete();
+                                extCacheFolder.delete();
+                                clearCacheTv.setText(getCacheSize());
+                            }
+                        })
+                        .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        }).show();
+            }
+        });
         return view;
+    }
+
+    private String getCacheSize() {
+        long usageBytes = cacheFolder.getTotalSpace() - cacheFolder.getUsableSpace()
+                + extCacheFolder.getTotalSpace() - extCacheFolder.getUsableSpace();
+        long usageKBytes = usageBytes / 1024;
+        long usageMBytes = usageBytes / 1024 / 1024;
+        if (usageMBytes > 1L) {
+            return String.valueOf(usageMBytes) + "MB";
+        } else {
+            return String.valueOf(usageKBytes) + "KB";
+        }
     }
 }
