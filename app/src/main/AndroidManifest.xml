@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.android.davidlin.rentbike">
+<manifest package="com.android.davidlin.rentbike"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- 在6.0+中，除了申请Permission，还需要在写入文件前在Java代码中申请权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
@@ -102,7 +102,10 @@
             android:name=".view.FinishOrderActivity"
             android:label="订单创建成功"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.MyBikesActivity">
+        <activity
+            android:name=".view.MyBikesActivity"
+            android:label="我的自行车"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
