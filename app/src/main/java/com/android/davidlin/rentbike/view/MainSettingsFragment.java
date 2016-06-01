@@ -69,9 +69,13 @@ public class MainSettingsFragment extends Fragment {
                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
+                                for (File file : cacheFolder.listFiles()) {
+                                    file.delete();
+                                }
+                                for (File file : extCacheFolder.listFiles()) {
+                                    file.delete();
+                                }
                                 dialog.dismiss();
-                                cacheFolder.delete();
-                                extCacheFolder.delete();
                                 clearCacheTv.setText(getCacheSize());
                             }
                         })
@@ -87,11 +91,16 @@ public class MainSettingsFragment extends Fragment {
     }
 
     private String getCacheSize() {
-        long usageBytes = cacheFolder.getTotalSpace() - cacheFolder.getUsableSpace()
-                + extCacheFolder.getTotalSpace() - extCacheFolder.getUsableSpace();
-        long usageKBytes = usageBytes / 1024;
-        long usageMBytes = usageBytes / 1024 / 1024;
-        if (usageMBytes > 1L) {
+        long usageBytes = 0L;
+        for (File file : cacheFolder.listFiles()) {
+            usageBytes += file.length();
+        }
+        for (File file : extCacheFolder.listFiles()) {
+            usageBytes += file.length();
+        }
+        double usageKBytes = usageBytes / 1024;
+        double usageMBytes = usageBytes / 1024 / 1024;
+        if (usageMBytes > 1) {
             return String.valueOf(usageMBytes) + "MB";
         } else {
             return String.valueOf(usageKBytes) + "KB";

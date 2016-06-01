@@ -2,6 +2,7 @@ package com.android.davidlin.rentbike;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.os.Environment;
 
 import com.android.davidlin.rentbike.utils.ConnectionUtils;
 import com.android.davidlin.rentbike.utils.image.DoubleCache;
@@ -59,7 +60,12 @@ public class RentBike extends Application {
         SharedPreferences prefs = getSharedPreferences("rentbike_prefs", MODE_PRIVATE);
         isLoadImage = prefs.getBoolean("isLoadImage", true);
 
-        cacheDir = getCacheDir().getAbsolutePath();
+        if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)
+                || !Environment.isExternalStorageRemovable()) {
+            cacheDir = getExternalCacheDir().getPath();
+        } else {
+            cacheDir = getCacheDir().getPath();
+        }
 
         mImageLoader.setImageCache(new DoubleCache(cacheDir));
     }
