@@ -30,6 +30,7 @@ public class OrderDetailActivity extends AppCompatActivity {
     private String type;
     private Order order;
     private AVUser owner, customer;
+    private AVObject orderObj;
     private int originState;
 
     @Override
@@ -38,7 +39,8 @@ public class OrderDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order_detail);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        order = Order.from((AVObject) getIntent().getParcelableExtra("order"));
+        orderObj = getIntent().getParcelableExtra("order");
+        order = Order.from(orderObj);
         type = getIntent().getStringExtra("type");
 
         stateTv = (TextView) findViewById(R.id.order_detail_state_tv);
@@ -54,28 +56,6 @@ public class OrderDetailActivity extends AppCompatActivity {
 
         contactBt = (Button) findViewById(R.id.order_detail_contact_bt);
         changeStateBt = (Button) findViewById(R.id.order_detail_changestate_bt);
-
-        originState = order.getState();
-        switch (originState) {
-            case Order.ORDER_STATE_NON_PAYED:
-                stateTv.setText("未支付");
-                break;
-            case Order.ORDER_STATE_PAYED:
-                stateTv.setText("已支付");
-                break;
-            case Order.ORDER_STATE_GET_BIKE:
-                stateTv.setText("已取车");
-                break;
-            case Order.ORDER_STATE_RETURN_BIKE:
-                stateTv.setText("已还车");
-                break;
-            case Order.ORDER_STATE_WAITING_COMMENT:
-                stateTv.setText("待评价");
-                break;
-            case Order.ORDER_STATE_HAVE_COMMENT:
-                stateTv.setText("已评价");
-                break;
-        }
 
         final AVQuery<AVUser> queryUser = AVUser.getQuery();
         queryUser.getInBackground(order.getCustomerId(), new GetCallback<AVUser>() {
@@ -126,7 +106,63 @@ public class OrderDetailActivity extends AppCompatActivity {
         createTimeTv.setText("创建时间: " + order.getStartDate());
         finishTimeTv.setText("完成时间: " + order.getFinishedAt());
 
+        long startTime = System.currentTimeMillis();
+        for (; ; ) {
+            if (type != null && type.equals("user")) {
+                contactBt.setText("联系车主");
+                contactBt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+                                + owner.getMobilePhoneNumber())));
+                    }
+                });
+                break;
+            } else if (type != null && type.equals("owner")) {
+                contactBt.setText("联系租客");
+                contactBt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
+                                + customer.getMobilePhoneNumber())));
+                    }
+                });
+                break;
+            } else {
+                long endTime = System.currentTimeMillis();
+                if (endTime - startTime > 3000) {
+                    contactBt.setVisibility(View.GONE);
+                    break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         originState = order.getState();
+        switch (originState) {
+            case Order.ORDER_STATE_NON_PAYED:
+                stateTv.setText("未支付");
+                break;
+            case Order.ORDER_STATE_PAYED:
+                stateTv.setText("已支付");
+                break;
+            case Order.ORDER_STATE_GET_BIKE:
+                stateTv.setText("已取车");
+                break;
+            case Order.ORDER_STATE_RETURN_BIKE:
+                stateTv.setText("已还车");
+                break;
+            case Order.ORDER_STATE_WAITING_COMMENT:
+                stateTv.setText("待评价");
+                break;
+            case Order.ORDER_STATE_HAVE_COMMENT:
+                stateTv.setText("已评价");
+                break;
+        }
+
         if (type != null && type.equals("user")) {
             switch (originState) {
                 case Order.ORDER_STATE_NON_PAYED:
@@ -154,7 +190,9 @@ public class OrderDetailActivity extends AppCompatActivity {
                     changeStateBt.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            // start comment page
+                            Intent intent = new Intent(OrderDetailActivity.this, CommentActivity.class);
+                            intent.putExtra("order", orderObj);
+                            startActivity(intent);
                         }
                     });
                     break;
@@ -219,37 +257,6 @@ public class OrderDetailActivity extends AppCompatActivity {
             }
         } else {
             changeStateBt.setVisibility(View.GONE);
-        }
-
-        long startTime = System.currentTimeMillis();
-        for (; ; ) {
-            if (type != null && type.equals("user")) {
-                contactBt.setText("联系车主");
-                contactBt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
-                                + owner.getMobilePhoneNumber())));
-                    }
-                });
-                break;
-            } else if (type != null && type.equals("owner")) {
-                contactBt.setText("联系租客");
-                contactBt.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"
-                                + customer.getMobilePhoneNumber())));
-                    }
-                });
-                break;
-            } else {
-                long endTime = System.currentTimeMillis();
-                if (endTime - startTime > 3000) {
-                    contactBt.setVisibility(View.GONE);
-                    break;
-                }
-            }
         }
     }
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_gray"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.android.davidlin.rentbike.view.CommentActivity">
+
+    <EditText
+        android:id="@+id/comment_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@android:color/white"
+        android:gravity="start"
+        android:hint="请输入评论"
+        android:padding="5dp"/>
+
+    <RatingBar
+        android:id="@+id/comment_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_edittext"
+        android:layout_marginTop="10dp"
+        android:max="5"
+        android:numStars="5"
+        android:progressTint="@android:color/holo_orange_dark"
+        android:stepSize="1"
+        />
+
+    <Button
+        android:id="@+id/comment_submit_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/comment_ratingbar"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:text="提交评论"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"/>
+</RelativeLayout>

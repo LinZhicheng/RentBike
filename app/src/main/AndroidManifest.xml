@@ -107,6 +107,11 @@
             android:label="我的自行车"
             android:screenOrientation="portrait">
         </activity>
+        <activity
+            android:name=".view.CommentActivity"
+            android:label="评论"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>
