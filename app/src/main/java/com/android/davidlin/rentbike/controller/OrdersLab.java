@@ -27,10 +27,8 @@ public class OrdersLab {
     private int hasQueried = 0;
     private AVQuery<AVObject> query = new AVQuery<>("OrderRecord");
 
-    public OrdersLab(Context context, ListView listView) {
-        this.adapter = new OrdersArrayListAdapter(context, orders);
+    public OrdersLab(ListView listView) {
         this.listView = listView;
-        listView.setAdapter(this.adapter);
     }
 
     public void queryData(String userId, String type) {
@@ -68,6 +66,14 @@ public class OrdersLab {
                 }
             }
         });
+    }
+
+    public void refresh(Context context, String userId, String type) {
+        setHasQueried(0);
+        orders.clear();
+        adapter = new OrdersArrayListAdapter(context, orders);
+        listView.setAdapter(adapter);
+        queryData(userId, type);
     }
 
     public int getHasQueried() {

@@ -1,5 +1,6 @@
 package com.android.davidlin.rentbike.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.android.davidlin.rentbike.R;
+import com.android.davidlin.rentbike.RentBike;
 import com.android.davidlin.rentbike.model.Comment;
 import com.android.davidlin.rentbike.model.Order;
 import com.avos.avoscloud.AVException;
@@ -37,8 +39,8 @@ public class CommentActivity extends AppCompatActivity {
         orderObj = getIntent().getParcelableExtra("order");
         order = Order.from(orderObj);
 
-        final String bikeId = getIntent().getStringExtra("bikeId");
-        final String customerId = getIntent().getStringExtra("customerId");
+        final String bikeId = order.getBikeId();
+        final String customerId = RentBike.currentUser.getObjectId();
 
         submitBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,11 @@ public class CommentActivity extends AppCompatActivity {
                                 public void done(AVException e) {
                                     if (e == null) {
                                         Toast.makeText(CommentActivity.this, "评论上传成功", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(CommentActivity.this, OrderDetailActivity.class);
+                                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.putExtra("order", orderObj);
+                                        intent.putExtra("type", "user");
+                                        startActivity(intent);
                                         finish();
                                     } else {
                                         Toast.makeText(CommentActivity.this, "评论上传失败", Toast.LENGTH_SHORT).show();

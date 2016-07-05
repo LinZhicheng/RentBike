@@ -21,6 +21,8 @@ import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.GetCallback;
 
+import java.util.Date;
+
 public class OrderDetailActivity extends AppCompatActivity {
 
     private TextView stateTv, customerTv, bikeNameTv, bikePriceTv, rentDaysTv,
@@ -78,7 +80,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                     Bike bike = Bike.from(avObject);
                     bikeNameTv.setText(bike.getBrand() + "\n" + bike.getType());
                     bikePriceTv.setText("￥ " + bike.getPrice());
-                    if (RentBike.isLoadImage) {
+                    if (RentBike.isLoadImage && bike.getPic1() != null) {
                         RentBike.mImageLoader.displayImage(bike.getPic1()
                                 .getThumbnailUrl(true, 200, 200), bikePic);
                     } else {
@@ -104,7 +106,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         totalPriceTv.setText("总金额：￥ " + order.getTotalPrice());
 
         createTimeTv.setText("创建时间: " + order.getStartDate());
-        finishTimeTv.setText("完成时间: " + order.getFinishedAt());
+        finishTimeTv.setText("完成时间: " + order.getEndDate());
 
         long startTime = System.currentTimeMillis();
         for (; ; ) {
@@ -235,6 +237,7 @@ public class OrderDetailActivity extends AppCompatActivity {
                             stateTv.setText("已还车");
                             changeStateBt.setEnabled(false);
                             order.setState(Order.ORDER_STATE_WAITING_COMMENT);
+                            order.setEndDate(new Date(System.currentTimeMillis()));
                             AVObject avObject = Order.to(order);
                             avObject.saveInBackground();
                         }

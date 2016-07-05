@@ -34,9 +34,13 @@ public class MyOrdersActivity extends AppCompatActivity {
         emptyTv = (TextView) findViewById(android.R.id.empty);
         listView.setEmptyView(emptyTv);
 
-        ordersLab = new OrdersLab(this, listView);
-        ordersLab.queryData(RentBike.currentUser.getObjectId(), type);
+        ordersLab = new OrdersLab(listView);
+    }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ordersLab.refresh(this, RentBike.currentUser.getObjectId(), type);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

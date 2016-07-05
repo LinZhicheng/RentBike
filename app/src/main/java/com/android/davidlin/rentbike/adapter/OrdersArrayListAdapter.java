@@ -107,7 +107,7 @@ public class OrdersArrayListAdapter extends BaseAdapter {
                 break;
         }
         createdat.setText("下单时间：" + order.getCreatedAt());
-        finishedat.setText("完成时间：" + order.getFinishedAt());
+        finishedat.setText("完成时间：" + order.getEndDate());
         totalPrice.setText("总价：" + order.getTotalPrice());
         return convertView;
     }
